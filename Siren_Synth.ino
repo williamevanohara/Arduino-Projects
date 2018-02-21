@@ -42,7 +42,7 @@ This example code is in the public domain.
 http://www.arduino.cc/en/Tutorial/IfStatement
 
 "Siren Synth" code
-  created 3 May 2016
+  created 3 May 2016; updated 21 Feb 2018
   by William O'Hara
   github.com/williamevanohara
   
@@ -51,14 +51,15 @@ http://www.arduino.cc/en/Tutorial/IfStatement
 
 // These constants won't change:
 const int analogPin = A0;    // pin that the sensor is attached to
-const int ledPin = 13;       // pin that the LED is attached to
+const int ledPin = 10;       // pin that the LED is attached to
+const int buzzerPin = 8;     // pin that the piezo buzzer is attached to
 const int threshold = 100;   // an arbitrary threshold level that's in the range of the analog input
 
 void setup() {
   // initialize the LED pin as an output:
-  pinMode(ledPin, OUTPUT);
+  pinMode(buzzerPin, OUTPUT);
   // initialize the piezo element as an output:
-  pinMode(10, OUTPUT);
+  pinMode(ledPin, OUTPUT);
   // initialize serial communications:
   Serial.begin(9600);
 }
@@ -70,11 +71,11 @@ void loop() {
   // if the analog value is lower than 100, silence the synthesizer. If it is higher, produce sound:
   // output brightness to the LED, on a scale of 0 to 255 (i.e. 1/4 of the potentiometer's range)
   if (analogValue < threshold) {
-    noTone(8);
-    analogWrite(10, analogValue/4);
+    noTone(buzzerPin);
+    analogWrite(ledPin, analogValue/4);
   } else {
-    analogWrite(10, analogValue/4);
-    tone(8, analogValue);
+    analogWrite(ledPin, analogValue/4);
+    tone(buzzerPin, analogValue);
   }
 
   // print the analog value:
