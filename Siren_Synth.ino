@@ -44,7 +44,7 @@ http://www.arduino.cc/en/Tutorial/IfStatement
 "Siren Synth" code
   created 3 May 2016; updated 21 Feb 2018
   by William O'Hara
-  github.com/williamevanohara
+  github.com/woh2822
   
 
  */
